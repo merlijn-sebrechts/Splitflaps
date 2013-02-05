@@ -48,15 +48,18 @@ namespace NetduinoPlusApplication1
             SPI.Configuration spiConfig = new SPI.Configuration(Pins.GPIO_PIN_D10, false, 200, 400, false, true, 100, SPI_Devices.SPI1);
             Microsoft.SPOT.Hardware.SPI spi = new SPI(spiConfig);
 
-            //uw moeder is fantastisch
+            // write HAEN
+            spi.Write(new byte[] { 0x40, 0x0A, 0x28 });
 
-            spi.Write(new byte[] { 0x40, 0x00, 0x00 });   // Set bank A to output
-            spi.Write(new byte[] { 0x40, 0x01, 0x00 });   // Set bank B to output
+
+            // Set banks to output
+            spi.Write(new byte[] { 0x42, 0x00, 0x00 });   // Set bank A to output
+            spi.Write(new byte[] { 0x42, 0x01, 0x00 });   // Set bank B to output
 
             while (true)
             {
-                spi.Write(new byte[] { 0x40, 0x12, 0xff });   // Set bank A outputs to high
-                spi.Write(new byte[] { 0x40, 0x13, 0xff });   // Set bank B outputs to high
+                spi.Write(new byte[] { 0x42, 0x12, 0xff });   // Set bank A outputs to high
+                spi.Write(new byte[] { 0x42, 0x13, 0xff });   // Set bank B outputs to high
 
 
                 led.Write(true); // turn on the LED 
