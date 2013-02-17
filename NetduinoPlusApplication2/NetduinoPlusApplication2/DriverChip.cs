@@ -12,9 +12,6 @@ namespace NetduinoPlusApplication2
 {
     class DriverChip
     {
-        OutputPort led = new OutputPort(Pins.ONBOARD_LED, false);
-
-
         Microsoft.SPOT.Hardware.SPI spi;
         byte address;
 
@@ -101,49 +98,41 @@ namespace NetduinoPlusApplication2
 
         public void Test(int charLength)
         {
-            while (true)
+            for (int l = 0; l < charLength; l++)
             {
+                //spi.Write(new byte[] { address, 0x12, 0x55 });   
+                //spi.Write(new byte[] { address, 0x13, 0xAA });   // Set bank B outputs to high
 
 
-                led.Write(true); // turn on the LED 
-                Thread.Sleep(500); // sleep for 250ms 
-                led.Write(false); // turn off the LED 
-
-                for (int l = 0; l < charLength; l++)
+                // Set bank A outputs to high
+                for (byte i = 0; i < 4; i++)
                 {
-                    //spi.Write(new byte[] { address, 0x12, 0x55 });   
-                    //spi.Write(new byte[] { address, 0x13, 0xAA });   // Set bank B outputs to high
-
-
-                    // Set bank A outputs to high
-                    for (byte i = 0; i < 4; i++)
-                    {
-                        flap(i);
-                    }
-
-                    // Set bank B outputs to high
-                    for (byte i = 4; i < 8; i++)
-                    {
-                        flap(i);
-                    }
-                    //wait to flap
-                    Thread.Sleep(100);
-
-
-                    ////spi.Write(new byte[] { address, 0x12, 0xAA });   // Set bank A outputs to high
-                    ////spi.Write(new byte[] { address, 0x13, 0x55 });   // Set bank B outputs to high
-                    //for (byte i = 0; i < 5; i++)
-                    //{
-                    //    flap(i);
-                    //}
-
-                    //for (byte i = 4; i < 8; i++)
-                    //{
-                    //    flap(i);
-                    //}
-
-
+                    flap(i);
                 }
+
+                // Set bank B outputs to high
+                for (byte i = 4; i < 8; i++)
+                {
+                    flap(i);
+                }
+                //wait to flap
+                Thread.Sleep(100);
+
+
+                ////spi.Write(new byte[] { address, 0x12, 0xAA });   // Set bank A outputs to high
+                ////spi.Write(new byte[] { address, 0x13, 0x55 });   // Set bank B outputs to high
+                //for (byte i = 0; i < 5; i++)
+                //{
+                //    flap(i);
+                //}
+
+                //for (byte i = 4; i < 8; i++)
+                //{
+                //    flap(i);
+                //}
+
+
+
             }
         }
     }
