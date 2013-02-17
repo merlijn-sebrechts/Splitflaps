@@ -62,8 +62,8 @@ namespace NetduinoPlusApplication1
 
 
 
-            SplitflapDriver driver = new SplitflapDriver();
-            driver.Test();
+            Rail rail = new Rail();
+            rail.Test();
 
 
         }
