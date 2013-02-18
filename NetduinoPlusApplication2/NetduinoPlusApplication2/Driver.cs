@@ -155,7 +155,7 @@ namespace NetduinoPlusApplication2
                 }
 
                 //wait to enable flaps to complete turn
-                Thread.Sleep(100);
+                Thread.Sleep(150);
             } while (!allShown);
 
         }

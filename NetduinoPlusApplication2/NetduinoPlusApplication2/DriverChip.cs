@@ -94,6 +94,7 @@ namespace NetduinoPlusApplication2
                 spi.Write(new byte[] { address, 0x13, nextByte });
                 this.currentB = nextByte;
             }
+            Thread.Sleep(5);
         }
 
         public void Test(int charLength)
@@ -116,7 +117,7 @@ namespace NetduinoPlusApplication2
                     flap(i);
                 }
                 //wait to flap
-                Thread.Sleep(100);
+                Thread.Sleep(200);
 
 
                 ////spi.Write(new byte[] { address, 0x12, 0xAA });   // Set bank A outputs to high

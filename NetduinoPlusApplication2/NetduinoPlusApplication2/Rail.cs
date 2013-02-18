@@ -15,9 +15,10 @@ namespace NetduinoPlusApplication2
         Microsoft.SPOT.Hardware.SPI spi;
 
         Driver driver;
-        //Driver driver2;
+        Driver driver2;
         Driver driver3;
-        //Driver driver4;
+        Driver driver4;
+        Driver driver5;
 
         public Rail()
         {
@@ -27,9 +28,10 @@ namespace NetduinoPlusApplication2
 
 
             driver = new Driver(spi, 0x42);
-            driver3 = new Driver(spi, 0x4A);
-            //driver = new Driver(spi, 0x42);
-            //driver = new Driver(spi, 0x42);
+            driver2 = new Driver(spi, 0x48);
+            driver3 = new Driver(spi, 0x40);
+            driver4 = new Driver(spi, 0x4A);
+            driver5 = new Driver(spi, 0x46);
         }
 
         public void Test()
@@ -37,7 +39,7 @@ namespace NetduinoPlusApplication2
             while (true)
             {
                 driver.Test();
-                driver3.Test();
+                driver2.Test();
             }
         }
     }
